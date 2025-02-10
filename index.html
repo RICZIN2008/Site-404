@@ -55,7 +55,6 @@
     }
 
     button {
-      width: 100%;
       padding: 15px;
       background-color: dodgerblue;
       border: none;
@@ -63,10 +62,19 @@
       color: white;
       font-size: 15px;
       cursor: pointer;
+      margin: 5px;
     }
 
     button:hover {
       background-color: deepskyblue;
+    }
+
+    #obterLoginButton {
+      background-color: #28a745; /* Cor de fundo para o botão 'Obter login' */
+    }
+
+    #obterLoginButton:hover {
+      background-color: #218838; /* Cor de fundo ao passar o mouse */
     }
 
     .error {
@@ -126,7 +134,52 @@
       margin-top: 20px;
     }
 
-    /* Estilo do Modal */
+    .category {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .category h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .category-buttons button {
+      width: auto;
+      padding: 10px 20px;
+    }
+
+    /* Botões adicionados */
+    #doacaoButton,
+    #grupoWhatsappButton,
+    #suporteButton,
+    #contatoButton {
+      background-color: #28a745; /* Cor verde */
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 15px;
+      padding: 12px 20px;
+      cursor: pointer;
+      margin: 5px;
+      width: auto;
+    }
+
+    #doacaoButton:hover,
+    #grupoWhatsappButton:hover,
+    #suporteButton:hover,
+    #contatoButton:hover {
+      background-color: #218838; /* Cor verde mais escura ao passar o mouse */
+    }
+
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -175,7 +228,10 @@
     <form id="loginForm">
       <input type="text" name="username" placeholder="Usuário" required>
       <input type="password" name="password" placeholder="Senha" required>
-      <button type="submit">Enviar</button>
+      <div class="button-container">
+        <button type="submit">Enviar</button>
+        <button type="button" id="obterLoginButton" onclick="abrirLink('https://linkebr.com/Ixw5co3')">Obter login</button>
+      </div>
       <p class="error" id="errorMessage">Usuário ou senha incorretos.</p>
     </form>
     <progress id="progressBar" value="0" max="100"></progress>
@@ -190,31 +246,53 @@
     <div class="info"><span>País: </span><span id="country">Carregando...</span></div>
     <div class="info"><span>Data: </span><span id="date">Carregando...</span></div>
 
-    <!-- Botões -->
-    <div class="button-container">
-      <div class="button-title">CMSP</div>
-      <button class="panel-btn" onclick="abrirLink('https://doritus.mmrcoss.tech/')">TAREFA SP</button>
-      <button class="panel-btn" onclick="abrirLink('https://github.com/RICZIN2008/KHAN-ACADEMY.git')">KHAN ACADEMY</button>
-      <button class="panel-btn" onclick="abrirLink('https://www.cmspsp.com.br')">ALURA</button>
-      <button class="panel-btn" onclick="abrirLink('https://github.com/RICZIN2008/SPEAK.git')">SPEAK</button>
-
-      <div class="button-title">Consulta</div>
-      <button class="panel-btn" id="btnConsulta" onclick="abrirLink('https://consultanumero.abrtelecom.com.br/consultanumero/consulta/consultaSituacaoAtualCtg')">Consulta Numero</button>
-      <button class="panel-btn" id="btnConsulta" onclick="abrirLink('https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp')">Consulta CPF</button>
-      <button class="panel-btn" id="btnConsulta" onclick="abrirLink('https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp')">Consulta CNPJ</button>
-      <button class="panel-btn" id="btnConsulta" onclick="abrirLink('https://riczin2008.github.io/IP')">Consulta IP</button>
-      
-      <div class="button-title">Pix Fake</div>
-      <button class="panel-btn" id="btnPixFake" onclick="abrirLink('https://www.mediafire.com/file/nkxmp7ejgtg4ea7/Nubank_version_1.zip/file')">Nubank Version 1</button>
-      <button class="panel-btn" id="btnPixFake" onclick="abrirLink('https://www.mediafire.com/file/notaeqbwveiki3y/Nubank_vesion_2.zip/file')">Nubank Version 2</button>
-      <button class="panel-btn" id="btnPixFake" onclick="abrirLink('https://www.mediafire.com/file/55gck9beesie7zj/Nubank+Qr+code_1.0+.zip/file')">Nubank Qr code 1.0</button>
-      <button class="panel-btn" id="btnPixFake" onclick="abrirLink('https://www.mediafire.com/file/9v996fqwjlbfeq7/PicPay.apk/file')">PicPay</button>
-      <button class="panel-btn" id="btnPixFake" onclick="abrirLink('https://www.mediafire.com/file/6zog4d0xljnh1zo/Inter.apk/file')">Inter</button>    <button class="panel-btn" id="btnPixFake" onclick="abrirLink('https://www.mediafire.com/file/325v49qb4ghmklc/c6_bank.apk/file')">c6 bank</button>
-      <button class="panel-btn" id="btnPixFake" onclick="abrirLink('https://www.mediafire.com/file/p9beu8uwri3z7ge/Pagbank.apk/file')">Pagbank</button>
+    <!-- Categorias e seus botões -->
+    <div class="category">
+      <h3>CMSP</h3>
+      <div class="category-buttons">
+        <button onclick="abrirLink('https://doritus.mmrcoss.tech/')">TAREFA SP</button>
+        <button onclick="abrirLink('https://github.com/RICZIN2008/KHAN-ACADEMY.git')">KHAN ACADEMY</button>
+        <button onclick="abrirLink('https://www.cmspsp.com.br')">ALURA</button>
+        <button onclick="abrirLink('https://github.com/RICZIN2008/SPEAK.git')">SPEAK</button>
+      </div>
     </div>
-  </div> 
 
-  <!-- Modal (janela) -->
+    <div class="category">
+      <h3>Consulta</h3>
+      <div class="category-buttons">
+        <button onclick="abrirLink('https://consultanumero.abrtelecom.com.br/consultanumero/consulta/consultaSituacaoAtualCtg')">Consulta Numero</button>
+        <button onclick="abrirLink('https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp')">Consulta CPF</button>
+        <button onclick="abrirLink('https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp')">Consulta CNPJ</button>
+        <button onclick="abrirLink('https://riczin2008.github.io/IP')">Consulta IP</button>
+      </div>
+    </div>
+
+    <div class="category">
+      <h3>Pix Fake</h3>
+      <div class="category-buttons">
+        <button onclick="abrirLink('https://www.mediafire.com/file/nkxmp7ejgtg4ea7/Nubank_version_1.zip/file')">Nubank Version 1</button>
+        <button onclick="abrirLink('https://www.mediafire.com/file/notaeqbwveiki3y/Nubank_vesion_2.zip/file')">Nubank Version 2</button>
+        <button onclick="abrirLink('https://www.mediafire.com/file/55gck9beesie7zj/Nubank+Qr+code_1.0+.zip/file')">Nubank Qr code 1.0</button>
+        <button onclick="abrirLink('https://www.mediafire.com/file/9v996fqwjlbfeq7/PicPay.apk/file')">PicPay</button>
+        <button onclick="abrirLink('https://www.mediafire.com/file/6zog4d0xljnh1zo/Inter.apk/file')">Inter</button>
+        <button onclick="abrirLink('https://www.mediafire.com/file/325v49qb4ghmklc/c6_bank.apk/file')">c6 bank</button>
+        <button onclick="abrirLink('https://www.mediafire.com/file/p9beu8uwri3z7ge/Pagbank.apk/file')">Pagbank</button>
+      </div>
+    </div>
+
+    <!-- Novos Botões -->
+    <div class="category">
+      <h3>Mais Opções</h3>
+      <div class="category-buttons">
+        <button id="doacaoButton" onclick="abrirLink('https://riczin2008.github.io/Doacao')">Doação</button>
+        <button id="grupoWhatsappButton" onclick="abrirLink('https://chat.whatsapp.com/HZnkHg6EmbtIFaXlYXaOBn')">Grupo Whatsapp</button>
+        <button id="suporteButton" onclick="abrirLink('https://chat.whatsapp.com/F2efvOjhGPZCPBh02WexfK')">Suporte</button>
+        <button id="contatoButton" onclick="abrirLink('https://Wa.me//+5511919339968')">Contato</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
   <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close" id="closeModal">&times;</span>
@@ -222,14 +300,15 @@
       <p>Você está prestes a abrir o link da tarefa.</p>
       <button onclick="window.open('https://www.exemplo.com', '_blank');">ABRIR LINK</button>
     </div>
-  </div> 
+  </div>
+
   <!-- Modal de Redes Sociais -->
   <div id="socialModal" class="modal">
     <div class="modal-content">
       <h2>Siga nossas Redes Sociais</h2>
       <p>Para acessar o painel, siga nossos perfis:</p>
-      <button onclick="seguir('https://www.youtube.com/@Ric_zin_404')">YouTube</button>
-      <button onclick="seguir('https://www.instagram.com/ric_zin_404')">Instagram</button>
+      <button onclick="seguir('https://www.youtube.com/@ricZin-404')">YouTube</button>
+      <button onclick="seguir('https://www.instagram.com/ric_zin_404?igsh=MTBwazVsYnAyNDAxZQ==')">Instagram</button>
     </div>
   </div>
 
@@ -294,12 +373,13 @@
         errorMessage.style.display = "block";
       }
     });
-    
-        // Função para abrir o link
+
+    // Função para abrir o link
     function abrirLink(url) {
       window.open(url, '_blank');
     }
   </script>
 </body>
 
-</html>
+          </html>
+  
